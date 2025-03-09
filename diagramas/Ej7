@@ -1,0 +1,31 @@
+// Clasificación de Calificaciones
+digraph {
+	graph [rankdir=TB]
+	node [color=lightblue2 shape=box style=filled]
+	edge [color=gray]
+	Start [label=Inicio color=green fillcolor=lightgreen shape=ellipse]
+	InputName [label="Solicitar nombre del estudiante" fillcolor=lightblue]
+	InputGrades [label="Solicitar 3 calificaciones" fillcolor=lightblue]
+	CalculateAvg [label="Calcular promedio" fillcolor=lightyellow]
+	Classify [label="Clasificar según promedio" fillcolor=orange shape=diamond]
+	A [label="Clasificación: A (90-100)" fillcolor=lightgreen]
+	B [label="Clasificación: B (80-89)" fillcolor=lightgreen]
+	C [label="Clasificación: C (70-79)" fillcolor=lightgreen]
+	D [label="Clasificación: D (60-69)" fillcolor=lightgreen]
+	F [label="Clasificación: F (0-59)" fillcolor=lightgreen]
+	End [label=Fin color=red fillcolor=lightcoral shape=ellipse]
+	Start -> InputName
+	InputName -> InputGrades
+	InputGrades -> CalculateAvg
+	CalculateAvg -> Classify
+	Classify -> A [label="90-100"]
+	Classify -> B [label="80-89"]
+	Classify -> C [label="70-79"]
+	Classify -> D [label="60-69"]
+	Classify -> F [label="0-59"]
+	A -> End
+	B -> End
+	C -> End
+	D -> End
+	F -> End
+}

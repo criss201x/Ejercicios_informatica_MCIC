@@ -1,0 +1,30 @@
+digraph "Diagrama de Flujo - Calculadora de Números Complejos" {
+	Inicio [label=Inicio shape=ellipse]
+	SolicitarNum1 [label="Solicitar primer número complejo" shape=parallelogram]
+	MostrarNum1 [label="Mostrar número 1" shape=rectangle]
+	SolicitarNum2 [label="Solicitar segundo número complejo" shape=parallelogram]
+	MostrarNum2 [label="Mostrar número 2" shape=rectangle]
+	SeleccionarOp [label="Seleccionar operación (+, -, *, /)" shape=parallelogram]
+	"OperacionValida?" [label="¿Operación válida?" shape=diamond]
+	ReintentarOp [label="Mostrar error y solicitar operación nuevamente" shape=rectangle]
+	Calcular [label="Calcular resultado" shape=rectangle]
+	"DivisionCero?" [label="¿División por cero?" shape=diamond]
+	MostrarError [label="Mostrar error: División por cero" shape=rectangle]
+	MostrarResultado [label="Mostrar resultado" shape=rectangle]
+	Fin [label=Fin shape=ellipse]
+	Inicio -> SolicitarNum1
+	SolicitarNum1 -> MostrarNum1
+	MostrarNum1 -> SolicitarNum2
+	SolicitarNum2 -> MostrarNum2
+	MostrarNum2 -> SeleccionarOp
+	SeleccionarOp -> "OperacionValida?"
+	"OperacionValida?" -> ReintentarOp [label=No]
+	ReintentarOp -> SeleccionarOp
+	"OperacionValida?" -> Calcular [label="Sí"]
+	Calcular -> "DivisionCero?" [label="Operación /"]
+	"DivisionCero?" -> MostrarError [label="Sí"]
+	MostrarError -> Fin
+	"DivisionCero?" -> MostrarResultado [label=No]
+	Calcular -> MostrarResultado [label="Otras operaciones"]
+	MostrarResultado -> Fin
+}

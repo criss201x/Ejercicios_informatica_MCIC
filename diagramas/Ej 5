@@ -1,0 +1,18 @@
+// Procesamiento de Texto
+digraph {
+	graph [rankdir=TB]
+	node [color=lightblue2 shape=box style=filled]
+	edge [color=gray]
+	Start [label=Inicio color=green fillcolor=lightgreen shape=ellipse]
+	Input [label="Solicitar texto al usuario" fillcolor=lightblue]
+	Process [label="Procesar texto
+(Caja Negra)" fillcolor=lightyellow shape=rectangle]
+	Start -> Input
+	Input -> Process
+	CountWords [label="Contar palabras y caracteres" fillcolor=lightyellow]
+	FindFrequent [label="Identificar palabra más frecuente" fillcolor=lightyellow]
+	ShowStats [label="Mostrar estadísticas" fillcolor=lightblue]
+	Process -> CountWords
+	CountWords -> FindFrequent
+	FindFrequent -> ShowStats
+}

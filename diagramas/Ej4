@@ -1,0 +1,27 @@
+// Juego de Adivinar el Número
+digraph {
+	graph [rankdir=TB]
+	node [color=lightblue2 shape=box style=filled]
+	edge [color=gray]
+	Start [label=Inicio color=green fillcolor=lightgreen shape=ellipse]
+	Generate [label="Generar número secreto" fillcolor=lightyellow]
+	Init [label="Inicializar contador (intentos = 0)" fillcolor=lightyellow]
+	Input [label="Solicitar número al usuario" fillcolor=lightblue]
+	Compare [label="¿Número == Secreto?" fillcolor=orange shape=diamond]
+	Greater [label="El número es mayor" fillcolor=salmon]
+	Less [label="El número es menor" fillcolor=salmon]
+	Success [label="¡Felicidades! Adivinaste el número en 8 intentos" fillcolor=lightgreen]
+	Increment [label="Incrementar contador (intentos += 1)" fillcolor=lightyellow]
+	End [label=Fin color=red fillcolor=lightcoral shape=ellipse]
+	Start -> Generate
+	Generate -> Init
+	Init -> Input
+	Input -> Compare
+	Compare -> Greater [label="Número < Secreto"]
+	Compare -> Less [label="Número > Secreto"]
+	Compare -> Success [label="Número == Secreto"]
+	Greater -> Increment
+	Less -> Increment
+	Increment -> Input
+	Success -> End
+}

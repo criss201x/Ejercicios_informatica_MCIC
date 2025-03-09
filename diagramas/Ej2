@@ -1,0 +1,21 @@
+digraph "Diagrama de Flujo - Generador de Contraseñas" {
+	Inicio [label=Inicio shape=ellipse]
+	SolicitarLongitud [label="Solicitar longitud de la contraseña" shape=parallelogram]
+	ValidarLongitud [label="¿Longitud >= 4?" shape=diamond]
+	ErrorLongitud [label="Mostrar error: Longitud mínima es 4" shape=rectangle]
+	ObtenerCaracteres [label="Obtener caracteres posibles" shape=rectangle]
+	"GenerarContraseña" [label="Generar contraseña aleatoria" shape=rectangle]
+	"MostrarContraseña" [label="Mostrar contraseña generada" shape=rectangle]
+	"Repetir?" [label="¿Generar otra contraseña?" shape=diamond]
+	Fin [label=Fin shape=ellipse]
+	Inicio -> SolicitarLongitud
+	SolicitarLongitud -> ValidarLongitud
+	ValidarLongitud -> ErrorLongitud [label=No]
+	ErrorLongitud -> SolicitarLongitud
+	ValidarLongitud -> ObtenerCaracteres [label="Sí"]
+	ObtenerCaracteres -> "GenerarContraseña"
+	"GenerarContraseña" -> "MostrarContraseña"
+	"MostrarContraseña" -> "Repetir?"
+	"Repetir?" -> SolicitarLongitud [label="Sí"]
+	"Repetir?" -> Fin [label=No]
+}

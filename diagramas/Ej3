@@ -1,0 +1,31 @@
+digraph "Diagrama de Flujo - Conversor de Unidades" {
+	Inicio [label=Inicio shape=ellipse]
+	MostrarOpciones [label="Mostrar opciones de conversión" shape=rectangle]
+	SeleccionarOpcion [label="Seleccionar tipo de conversión" shape=parallelogram]
+	"OpcionValida?" [label="¿Opción válida?" shape=diamond]
+	ErrorOpcion [label="Mostrar error: Opción no válida" shape=rectangle]
+	SolicitarValor [label="Solicitar valor a convertir" shape=parallelogram]
+	SolicitarUnidad [label="Solicitar unidad de medida" shape=parallelogram]
+	ConvertirLongitud [label="Convertir longitud (m <-> ft)" shape=rectangle]
+	ConvertirTemperatura [label="Convertir temperatura (C <-> F)" shape=rectangle]
+	ConvertirMasa [label="Convertir masa (kg <-> lb)" shape=rectangle]
+	MostrarResultado [label="Mostrar resultado de la conversión" shape=rectangle]
+	"Repetir?" [label="¿Realizar otra conversión?" shape=diamond]
+	Fin [label=Fin shape=ellipse]
+	Inicio -> MostrarOpciones
+	MostrarOpciones -> SeleccionarOpcion
+	SeleccionarOpcion -> "OpcionValida?"
+	"OpcionValida?" -> ErrorOpcion [label=No]
+	ErrorOpcion -> MostrarOpciones
+	"OpcionValida?" -> SolicitarValor [label="Sí"]
+	SolicitarValor -> SolicitarUnidad
+	SolicitarUnidad -> ConvertirLongitud [label=Longitud]
+	SolicitarUnidad -> ConvertirTemperatura [label=Temperatura]
+	SolicitarUnidad -> ConvertirMasa [label=Masa]
+	ConvertirLongitud -> MostrarResultado
+	ConvertirTemperatura -> MostrarResultado
+	ConvertirMasa -> MostrarResultado
+	MostrarResultado -> "Repetir?"
+	"Repetir?" -> MostrarOpciones [label="Sí"]
+	"Repetir?" -> Fin [label=No]
+}

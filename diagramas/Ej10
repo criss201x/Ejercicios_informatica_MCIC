@@ -1,0 +1,20 @@
+// Lanzamiento de Dado
+digraph {
+	graph [rankdir=TB]
+	node [color=lightblue2 shape=box style=filled]
+	edge [color=gray]
+	Start [label=Inicio color=green fillcolor=lightgreen shape=ellipse]
+	Init [label="Inicializar contadores (cara1=0, cara2=0, ..., cara6=0)" fillcolor=lightyellow]
+	Ask [label="Preguntar: ¿Lanzar dado?" fillcolor=orange shape=diamond]
+	Roll [label="Lanzar dado (generar número aleatorio 1-6)" fillcolor=lightblue]
+	Update [label="Incrementar contador de la cara correspondiente" fillcolor=lightyellow]
+	Show [label="Mostrar resultados (veces que salió cada cara)" fillcolor=lightblue]
+	End [label=Fin color=red fillcolor=lightcoral shape=ellipse]
+	Start -> Init
+	Init -> Ask
+	Ask -> Roll [label="Sí"]
+	Roll -> Update
+	Update -> Ask
+	Ask -> Show [label=No]
+	Show -> End
+}
